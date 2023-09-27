@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:cube/dice_roller.dart';
 
 class GradientContainer extends StatelessWidget {
-  const GradientContainer(this.colorFirst, this.colorSecound, {super.key});
+  const GradientContainer(this.colorsList, {super.key});
 
-  final Color colorFirst;
-  final Color colorSecound;
+  final List<Color> colorsList;
 
   void rollDice() {}
 
@@ -13,35 +13,13 @@ class GradientContainer extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
-            colorFirst,
-            colorSecound,
-          ],
+          colors: colorsList,
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
       ),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              'assets/images/dice-3.png',
-              width: 200,
-            ),
-            TextButton(
-              onPressed: () {},
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.only(top: 20),
-                foregroundColor: Colors.white,
-                textStyle: const TextStyle(
-                  fontSize: 28,
-                ),
-              ),
-              child: const Text('Roll Dice'),
-            ),
-          ],
-        ),
+      child: const Center(
+        child: DiceRoller(),
       ),
     );
   }
